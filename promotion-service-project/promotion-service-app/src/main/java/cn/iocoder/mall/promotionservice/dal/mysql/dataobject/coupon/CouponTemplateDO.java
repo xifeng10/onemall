@@ -1,7 +1,14 @@
 package cn.iocoder.mall.promotionservice.dal.mysql.dataobject.coupon;
 
 import cn.iocoder.mall.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.mall.promotion.api.enums.PreferentialTypeEnum;
+import cn.iocoder.mall.promotion.api.enums.RangeTypeEnum;
+import cn.iocoder.mall.promotion.api.enums.coupon.template.CouponTemplateDateTypeEnum;
+import cn.iocoder.mall.promotion.api.enums.coupon.template.CouponTemplateStatusEnum;
+import cn.iocoder.mall.promotion.api.enums.coupon.template.CouponTemplateTypeEnum;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.util.Date;
@@ -11,7 +18,9 @@ import java.util.Date;
  *
  * 当用户领取时，会生成 {@link CouponCardDO} 优惠劵（码）。
  */
+@TableName("coupon_template")
 @Data
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 public class CouponTemplateDO extends BaseDO {
 
@@ -31,6 +40,8 @@ public class CouponTemplateDO extends BaseDO {
     /**
      * 类型
      *
+     * 枚举 {@link CouponTemplateTypeEnum}
+     *
      * 1-优惠劵
      * 2-优惠码
      */
@@ -38,7 +49,7 @@ public class CouponTemplateDO extends BaseDO {
     /**
      * 优惠码状态
      *
-     * {@link cn.iocoder.mall.promotion.api.enums.CouponTemplateStatusEnum}
+     * 枚举 {@link CouponTemplateStatusEnum}
      *
      * 当优惠劵（码）开启中，可以手动操作，设置禁用中。
      */
@@ -98,6 +109,8 @@ public class CouponTemplateDO extends BaseDO {
     /**
      * 可用范围的类型
      *
+     * 枚举 {@link RangeTypeEnum}
+     *
      * 10-全部（ALL）：所有可用
      * 20-部分（PART）：部分商品可用，或指定商品可用
      * 21-部分（PART）：部分商品不可用，或指定商品可用
@@ -111,6 +124,8 @@ public class CouponTemplateDO extends BaseDO {
     private String rangeValues;
     /**
      * 生效日期类型
+     *
+     * 枚举 {@link CouponTemplateDateTypeEnum}
      *
      * 1-固定日期
      * 2-领取日期：领到券 {@link #fixedStartTerm} 日开始 N 天内有效
@@ -146,6 +161,8 @@ public class CouponTemplateDO extends BaseDO {
     // ========== 使用效果 BEGIN ==========
     /**
      * 优惠类型
+     *
+     * 枚举 {@link PreferentialTypeEnum}
      *
      * 1-代金卷
      * 2-折扣卷

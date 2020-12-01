@@ -1,26 +1,24 @@
 package cn.iocoder.mall.promotion.api.rpc.recommend.dto;
 
+import cn.iocoder.common.framework.validator.InEnum;
+import cn.iocoder.common.framework.vo.PageParam;
+import cn.iocoder.mall.promotion.api.enums.recommend.ProductRecommendTypeEnum;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-import javax.validation.constraints.NotNull;
-import java.io.Serializable;
-
 /**
- * 商品推荐分页 DTO
+ * 商品推荐分页 Request DTO
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-public class ProductRecommendPageReqDTO implements Serializable {
+public class ProductRecommendPageReqDTO extends PageParam {
 
     /**
      * 推荐类型
      */
+    @InEnum(value = ProductRecommendTypeEnum.class, message = "推荐类型必须是 {value}")
     private Integer type;
-
-    @NotNull(message = "页码不能为空")
-    private Integer pageNo;
-    @NotNull(message = "每页条数不能为空")
-    private Integer pageSize;
 
 }

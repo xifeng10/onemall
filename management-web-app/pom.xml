@@ -66,25 +66,24 @@
             <artifactId>product-service-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <!-- 营销服务 -->
+            <groupId>cn.iocoder.mall</groupId>
+            <artifactId>promotion-service-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
         <!-- Registry 和 Config 相关 -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-<!--            <exclusions>-->
-<!--                <exclusion>-->
-<!--                    <artifactId>nacos-client</artifactId>-->
-<!--                    <groupId>com.alibaba.nacos</groupId>-->
-<!--                </exclusion>-->
-<!--            </exclusions>-->
         </dependency>
 
-        <!-- TODO 芋艿 解决 1.3.1 beta 的问题 -->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.nacos</groupId>-->
-<!--            <artifactId>nacos-client</artifactId>-->
-<!--            <version>1.3.1</version>-->
-<!--        </dependency>-->
+        <!-- 监控相关 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
 
         <!-- 工具类相关 -->
         <dependency>
@@ -102,5 +101,17 @@
         </dependency>
 
     </dependencies>
+
+    <build>
+        <!-- 设置构建的 jar 包名 -->
+        <finalName>${project.artifactId}</finalName>
+        <!-- 使用 spring-boot-maven-plugin 插件打包 -->
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
